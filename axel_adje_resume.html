@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axel ADJE — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --accent: #c0392b;
+    --accent-light: #e8d5d3;
+    --muted: #6b7280;
+    --border: #e2e0db;
+    --bg: #faf9f7;
+    --sidebar-bg: #1a1a2e;
+    --sidebar-text: #e8e6e1;
+    --sidebar-muted: #9ca3af;
+    --tag-bg: rgba(192,57,43,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f0ede8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .page {
+    width: 900px;
+    background: var(--bg);
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 40px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .photo-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar-section { display: flex; flex-direction: column; gap: 14px; }
+
+  .sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12.5px;
+    color: var(--sidebar-muted);
+    line-height: 1.5;
+  }
+
+  .contact-item .icon {
+    font-size: 13px;
+    margin-top: 1px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .contact-item a { color: var(--sidebar-muted); text-decoration: none; }
+  .contact-item a:hover { color: white; }
+
+  .strength-item { margin-bottom: 6px; }
+  .strength-name {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 3px;
+  }
+  .strength-desc {
+    font-size: 11.5px;
+    color: var(--sidebar-muted);
+    line-height: 1.55;
+  }
+
+  .lang-item { display: flex; justify-content: space-between; align-items: center; }
+  .lang-name { font-size: 13px; font-weight: 500; color: white; }
+  .lang-level {
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(192,57,43,0.2);
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .interest-item { margin-bottom: 8px; }
+  .interest-name { font-size: 12.5px; font-weight: 500; color: white; margin-bottom: 3px; }
+  .interest-desc { font-size: 11.5px; color: var(--sidebar-muted); line-height: 1.55; }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 40px 40px 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .name-block { border-bottom: 2px solid var(--accent); padding-bottom: 20px; }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+
+  .title {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .summary {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 10px;
+    max-width: 480px;
+  }
+
+  /* Section headers */
+  .section { display: flex; flex-direction: column; gap: 14px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.2px;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Timeline entries */
+  .entry {
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    gap: 0 16px;
+    padding-left: 0;
+  }
+
+  .entry-bar {
+    background: var(--accent-light);
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .entry-bar::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+
+  .entry-content { padding-bottom: 6px; }
+
+  .entry-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .entry-meta {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 3px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .entry-meta .dot { color: var(--border); }
+
+  .entry-desc {
+    font-size: 12px;
+    color: #4b5563;
+    line-height: 1.65;
+    margin-top: 6px;
+  }
+
+  .entry-desc ul { padding-left: 14px; }
+  .entry-desc li { margin-bottom: 3px; }
+
+  /* Skills grid */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-size: 11.5px;
+    font-weight: 500;
+    background: var(--tag-bg);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--accent-light);
+    letter-spacing: 0.2px;
+  }
+
+  .skill-tag.neutral {
+    background: #f3f4f6;
+    color: #374151;
+    border-color: #e5e7eb;
+  }
+
+  .skills-sub-title {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    margin-top: 10px;
+  }
+  .skills-sub-title:first-child { margin-top: 0; }
+
+  /* Print */
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+
+    <div class="photo-wrap">
+      <img src="images/photo adje axel.jpg" alt="Axel ADJE" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.15);">
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Contact</div>
+      <div class="contact-item">
+        <span class="icon">✉</span>
+        <span>axel.adje@edu.esiee.fr</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <span>Noisy-le-Grand (93160)</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">☎</span>
+        <span>06 09 76 21 22</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">in</span>
+        <a href="#">@axel-adje-0467242ba</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Key Traits</div>
+      <div class="strength-item">
+        <div class="strength-name">Curious</div>
+        <div class="strength-desc">Always looking for new discoveries — I never miss a chance to ask the question that moves things forward.</div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-name">Resilient</div>
+        <div class="strength-desc">Falling down seven times just means I'll stand back up eight times.</div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-name">Adaptable</div>
+        <div class="strength-desc">Whatever the context, I adjust, adapt, and give the best of myself.</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Languages</div>
+      <div class="lang-item">
+        <span class="lang-name">English</span>
+        <span class="lang-level">C2 · Bilingual</span>
+      </div>
+      <div class="lang-item" style="margin-top:8px">
+        <span class="lang-name">Spanish</span>
+        <span class="lang-level">B1 · Intermediate</span>
+      </div>
+      <div class="lang-item" style="margin-top:8px">
+        <span class="lang-name">French</span>
+        <span class="lang-level">Native</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Interests</div>
+      <div class="interest-item">
+        <div class="interest-name">✈ Travel</div>
+        <div class="interest-desc">Grew up across several African countries. I love exploring new cultures and diverse landscapes.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-name">📖 Reading</div>
+        <div class="interest-desc">From Japanese light novels to game theory and economics — I read everything. I also do regular tech and science watch.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-name">⚙ Automation</div>
+        <div class="interest-desc">I frequently automate my workflow using Bash scripts, n8n, or Python (schedule library for recurring tasks).</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+
+    <div class="name-block">
+      <div class="name">Axel ADJE</div>
+      <div class="title">Engineering Student — Data &amp; Applications · ESIEE Paris</div>
+      <p class="summary">
+        Training in data science and machine learning both academically and through self-study. Developing soft skills throughout three years of engineering school, with a focus on organisation and leadership. Currently seeking an internship from December 2025.
+      </p>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Education</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-bar"></div>
+        <div class="entry-content">
+          <div class="entry-title">Engineering Degree — Data &amp; Applications</div>
+          <div class="entry-meta">
+            <span>Sep 2024 – Jul 2027</span>
+            <span class="dot">·</span>
+            <span>ESIEE Paris, Noisy-le-Grand</span>
+          </div>
+          <div class="entry-desc">Machine Learning, Data Visualisation, Relational Databases…</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-bar"></div>
+        <div class="entry-content">
+          <div class="entry-title">L2 in Mathematics &amp; Physics (CPGE)</div>
+          <div class="entry-meta">
+            <span>Sep 2022 – Jul 2024</span>
+            <span class="dot">·</span>
+            <span>Lycée César Baggio, Lille</span>
+          </div>
+          <div class="entry-desc">Preparatory classes for engineering schools (MPSI/MP).</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-bar"></div>
+        <div class="entry-content">
+          <div class="entry-title">French Baccalauréat — Scientific track (with Honours)</div>
+          <div class="entry-meta">
+            <span>Sep 2019 – Jul 2022</span>
+            <span class="dot">·</span>
+            <span>Lycée Jean Mermoz, Dakar, Senegal</span>
+          </div>
+          <div class="entry-desc">Maths · Physics · Computer Science (NSI) — Mention très bien.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Skills</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div>
+        <div class="skills-sub-title">Programming &amp; Tools</div>
+        <div class="skills-grid">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C / C++</span>
+          <span class="skill-tag">Bash</span>
+          <span class="skill-tag">HTML / CSS</span>
+          <span class="skill-tag">Assembleur</span>
+          <span class="skill-tag">SAS</span>
+        </div>
+        <div class="skills-sub-title">Data &amp; Visualisation</div>
+        <div class="skills-grid">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">Seaborn</span>
+          <span class="skill-tag">KNIME</span>
+        </div>
+        <div class="skills-sub-title">Other</div>
+        <div class="skills-grid">
+          <span class="skill-tag neutral">Django</span>
+          <span class="skill-tag neutral">n8n</span>
+          <span class="skill-tag neutral">GitHub</span>
+          <span class="skill-tag neutral">Office 365</span>
+          <span class="skill-tag neutral">Odoo</span>
+        </div>
+        <div class="skills-sub-title">Soft Skills</div>
+        <div class="skills-grid">
+          <span class="skill-tag neutral">Public Speaking</span>
+          <span class="skill-tag neutral">Agile Teamwork</span>
+          <span class="skill-tag neutral">Analytical Thinking</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Projects</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-bar"></div>
+        <div class="entry-content">
+          <div class="entry-title">Academic Projects</div>
+          <div class="entry-meta"><span>2022 – 2025 · ESIEE Paris</span></div>
+          <div class="entry-desc">
+            <ul>
+              <li><strong>Deep Learning:</strong> Bayesian discriminant analysis to classify handwritten digit images.</li>
+              <li><strong>Database Design:</strong> Modelled a SQL Server database of French international school sections worldwide.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-bar"></div>
+        <div class="entry-content">
+          <div class="entry-title">Personal Projects</div>
+          <div class="entry-meta"><span>2016 – Present · Self-directed</span></div>
+          <div class="entry-desc">
+            <ul>
+              <li>Set up a <strong>home server</strong> for secure personal data hosting, integrating a DeepSeek R1 chatbot API service.</li>
+              <li>Built an interactive <strong>Power BI dashboard</strong> visualising RATP line ridership by station entries/exits and train traffic.</li>
+              <li>Configured <strong>Odoo CRM</strong> for the 2025 mandate of ESIEE's Junior Enterprise.</li>
+              <li>Member of <strong>Karibu</strong> association (Université Gustave Eiffel), supporting African students settling in France.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Experience</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-bar"></div>
+        <div class="entry-content">
+          <div class="entry-title">Scratch Programming Instructor</div>
+          <div class="entry-meta">
+            <span>Apr 2021 – May 2021</span>
+            <span class="dot">·</span>
+            <span>École Reine Fabiola, Dakar, Senegal</span>
+          </div>
+          <div class="entry-desc">
+            Co-facilitated an introductory programming course for 8–9 year old children. Designed a playful learning environment to teach core concepts: variables, loops, and Scratch.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>

@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adje Axel — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>Adje Axel</title>
 </head>
 <body>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
-            <div class="logo">Portfolio</div>
-            <ul class="nav-links">
+            <div class="logo">Axel.</div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#interests" class="nav-link">Interests</a></li>
+                <li><a href="#projects-section" class="nav-link">Projects</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -25,30 +28,32 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="fade-in">Hello, I'm <span class="highlight">Axel</span></h1>
-                <p class="subtitle fade-in">Data Engineering Student | Embedded Systems Enthusiast | Youtube Content Creator</p>
-                <div class="cta-buttons fade-in">
-                    <a href="#about" class="btn btn-primary">Download Resume</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
+            <div class="eyebrow">Available for opportunities</div>
+            <h1>Hello, I'm <span class="highlight">Axel</span></h1>
+            <p class="subtitle">Data Engineering Student · Embedded Systems Enthusiast · YouTube Content Creator</p>
+            <div class="cta-buttons">
+                <a href="axel_adje_resume.html" class="btn btn-primary">
+                    Resume
+                </a>
+                <a href="mailto:axel.adje@edu.esiee.fr" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span></span>
-        </div>
+        <div class="scroll-indicator" aria-hidden="true"><span></span></div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <!-- Skills -->
+    <section id="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <div class="section-header reveal">
+                <span class="section-label">What I know</span>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
             <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">💻</div>
+                <div class="skill-card reveal">
+                    <span class="skill-icon">💻</span>
                     <h3>Programming Languages</h3>
                     <div class="skill-tags">
                         <span class="tag">C++</span>
@@ -56,18 +61,18 @@
                         <span class="tag">Java</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🌐</div>
+                <div class="skill-card reveal" style="transition-delay:0.08s">
+                    <span class="skill-icon">🌐</span>
                     <h3>Web Development</h3>
                     <div class="skill-tags">
                         <span class="tag">HTML</span>
                         <span class="tag">CSS</span>
                         <span class="tag">JavaScript</span>
-                        <span class="tag">React (Basics)</span>
+                        <span class="tag">React</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎯</div>
+                <div class="skill-card reveal" style="transition-delay:0.16s">
+                    <span class="skill-icon">🎯</span>
                     <h3>Embedded Systems</h3>
                     <div class="skill-tags">
                         <span class="tag">C</span>
@@ -75,18 +80,138 @@
                         <span class="tag">System Design</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🤖</div>
+                <div class="skill-card reveal" style="transition-delay:0.24s">
+                    <span class="skill-icon">🤖</span>
                     <h3>Areas of Interest</h3>
                     <div class="skill-tags">
-                        <span class="tag">AI/ML</span>
+                        <span class="tag">AI / ML</span>
                         <span class="tag">Problem Solving</span>
-                        <span class="tag">Algorithm Design</span>
+                        <span class="tag">Algorithms</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- Projects -->
+    <section id="projects-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">What I've built</span>
+                <h2 class="section-title">Projects</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="projects-scroll-wrapper">
+                <div class="projects-scroll-container" id="projectsScroll">
+
+                    <a href="https://github.com/Gidaxe/POMODORO-ONE" target="_blank" rel="noopener" class="project-box">
+                        <div class="project-img-wrap">
+                            <img src="images/sugarandswirl.png" alt="POMODORO ONE" loading="lazy">
+                        </div>
+                        <div class="project-body">
+                            <h4>POMODORO ONE</h4>
+                            <div class="project-tags">
+                                <span class="tag">C++</span>
+                                <span class="tag">State Machine Architecture</span>
+                                <span class="tag">Custom Data Structures</span>
+                                <span class="tag">Embedded Systems</span>
+                            </div>
+                            <p>Pomodoro One is an embedded microcontroller project designed to support productivity. It features 3 modes: a stopwatch, a contrast adjustment mode for the lcd display, and lap tracking.</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            <p class="drag-hint">← swipe to see more →</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Axel ADJE </p>
+            <p>GitHub →
+  <a href="https://github.com/Gidaxe/" target="_blank" rel="noopener noreferrer">
+    https://github.com/Gidaxe
+  </a>
+</p>
+
+        </div>
+    </footer>
+
+    <script>
+        // ── Navbar scroll state ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+
+        // ── Active nav link on scroll ──
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { threshold: 0.4 });
+
+        sections.forEach(s => observer.observe(s));
+
+        // ── Hamburger / mobile nav ──
+        const hamburger = document.getElementById('hamburger');
+        const navList   = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            const open = navList.classList.toggle('open');
+            hamburger.classList.toggle('open', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        });
+
+        // close on link click
+        navList.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('open');
+                hamburger.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ── Scroll reveal ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ── Drag-to-scroll on project rail ──
+        const rail = document.getElementById('projectsScroll');
+        let isDown = false, startX, scrollLeft;
+
+        rail.addEventListener('mousedown', e => {
+            isDown = true;
+            startX = e.pageX - rail.offsetLeft;
+            scrollLeft = rail.scrollLeft;
+        });
+
+        ['mouseleave','mouseup'].forEach(ev => rail.addEventListener(ev, () => isDown = false));
+
+        rail.addEventListener('mousemove', e => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - rail.offsetLeft;
+            rail.scrollLeft = scrollLeft - (x - startX) * 1.2;
+        });
+    </script>
 </body>
 </html>
